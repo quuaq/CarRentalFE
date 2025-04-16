@@ -40,3 +40,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Angular ve Node.js için uygun .gitignore
+
+node_modules/
+dist/
+.env
+.vscode/
+.angular/
+package-lock.json
