@@ -1,0 +1,19 @@
+.navbar-brand {
+    color: #ffc107 !important;
+  }
+  
+  .nav-link {
+    transition: all 0.2s ease-in-out;
+    margin-right: 25px;
+  }
+  
+  .nav-link:hover {
+    color: #ffc107 !important;
+    text-decoration: underline;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    color: #ffffff !important;
+  }
+ 
