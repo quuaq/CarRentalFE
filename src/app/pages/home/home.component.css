@@ -1,0 +1,33 @@
+.banner-container {
+    position: relative;
+  }
+  
+  .banner-container img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 2rem;
+  }
+  
+  .reservation-form-overlay {
+    position: absolute;
+    top: 95%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 1000px;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(5px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .reservation-form-overlay {
+      top: 80%;
+      padding: 1rem;
+    }
+  }
+  

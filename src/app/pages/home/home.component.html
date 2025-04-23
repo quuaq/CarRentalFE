@@ -1,1 +1,48 @@
-<h1 class="text-center mt-5">Welcome to Car Rental </h1>
+<div class="banner-container position-relative">
+    <img src="assets/car-banner.jpg" alt="Car Banner">
+  
+    <div class="reservation-form-overlay position-absolute">
+      <form #rentalForm = "ngForm" (ngSubmit)="onSubmit(rentalForm)">
+        <div class="row g-3">
+  
+          <div class="col-md-4">
+            <label for="pickupLocation" class="form-label fw-bold">Alış Noktası</label>
+            <input type="text" id="pickupLocation" class="form-control" value="Ercan Havalimanı" disabled>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="startDate" class="form-label fw-bold">Alış Tarihi</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" ngModel>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="startTime" class="form-label fw-bold">Alış Saati</label>
+            <input type="time" id="startTime" name="startTime" class="form-control" ngModel>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="endDate" class="form-label fw-bold">İade Tarihi</label>
+            <input type="date" id="endDate" name="endDate" class="form-control" ngModel>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="endTime" class="form-label fw-bold">İade Saati</label>
+            <input type="time" id="endTime" name="endTime" class="form-control" ngModel>
+          </div>
+  
+          <div class="col-md-4 d-flex align-items-end">
+            <div class="form-check">
+              <input type="checkbox" id="dropDiffLocation" class="form-check-input">
+              <label for="dropDiffLocation" class="form-check-label">Farklı lokasyona bırakmak istiyorum</label>
+            </div>
+          </div>
+  
+          <div class="col-12">
+            <button type="submit" class="btn btn-warning w-100 fw-bold">Araçları Keşfet</button>
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>
+  
