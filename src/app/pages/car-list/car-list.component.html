@@ -1,4 +1,30 @@
-<div *ngFor="let car of cars">
-  <h5>{{ car.make }} - {{ car.model }}</h5>
-  <p>Yıl: {{ car.year }}, Günlük Fiyat: {{ car.pricePerDay }}₺</p>
+<div class="rez-date-bar" id="rezDate">
+  <div class="d-flex justify-content-between align-items-center flex-wrap w-100">
+    <div>
+      <strong>Alış:</strong> {{ startDate | date:'dd MMMM yyyy HH:mm' }}
+      <span class="mx-2">→</span>
+      <strong>İade:</strong> {{ endDate | date:'dd MMMM yyyy HH:mm' }}
+    </div>
+    <div class="duration-info">
+      Süre: {{ dayCount }} Gün
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let car of cars">
+      <div class="card shadow-sm mb-4">
+        <img [src]="'assets/cars/' + car.make.toLowerCase() + '.jpg'" class="card-img-top" alt="Araç Görseli"
+          style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.make }} - {{ car.model }}</h5>
+          <p class="card-text">Yıl: {{ car.year }}</p>
+          <p class="card-text fw-bold">Günlük Fiyat: {{ car.pricePerDay }}₺</p>
+          <p class="card-text text-success fw-bold">Toplam Fiyat: {{ car.totalPrice }}₺</p>
+          <a class="btn reserve-btn w-100">Şimdi Rezerve Et</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
