@@ -1,0 +1,55 @@
+<div class="auth-container">
+
+    <div class="auth-buttons">
+      <button class="btn btn-primary" (click)="mode = 'login'">Login</button>
+      <button class="btn btn-secondary" (click)="mode = 'register'">Register</button>
+    </div>
+  
+    <div *ngIf="mode === 'login'" class="auth-form">
+      <h2>Login</h2>
+      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">Email</label>
+          <input type="email" id="loginEmail" class="form-control" name="email" ngModel required>
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input type="password" id="loginPassword" class="form-control" name="password" ngModel required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Login</button>
+      </form>
+    </div>
+  
+    <div *ngIf="mode === 'register'" class="auth-form">
+      <h2>Register</h2>
+      <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+        <div class="mb-3">
+          <label for="registerFirstName" class="form-label">First Name</label>
+          <input type="text" id="registerFirstName" class="form-control" name="firstName" ngModel required>
+        </div>
+        <div class="mb-3">
+          <label for="registerLastName" class="form-label">Last Name</label>
+          <input type="text" id="registerLastName" class="form-control" name="lastName" ngModel required>
+        </div>
+        <div class="mb-3">
+          <label for="registerTcNo" class="form-label">TC No</label>
+          <input type="text" id="registerTcNo" class="form-control" name="tcNo" ngModel required>
+        </div>
+        <div class="mb-3">
+          <label for="registerPhoneNumber" class="form-label">Phone Number</label>
+          <input type="text" id="registerPhoneNumber" class="form-control" name="phoneNumber" ngModel required>
+        </div>
+        <div class="mb-3">
+          <label for="registerEmail" class="form-label">Email</label>
+          <input type="email" id="registerEmail" class="form-control" name="email" ngModel required>
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">Password</label>
+          <input type="password" id="registerPassword" class="form-control" name="password" ngModel required>
+        </div>
+        <button type="submit" class="btn btn-warning w-100">Register</button>
+      </form>
+    </div>
+  
+  </div>
+  
