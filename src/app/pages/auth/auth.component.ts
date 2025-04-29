@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule], 
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
 export class AuthComponent {
+  isLoading = false;
   mode: 'login' | 'register' = 'login';
   loginForm!: FormGroup;
   registerForm!: FormGroup;
 
   constructor(private authService: AuthService,
-              private router: Router
-  ) {} 
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -39,34 +40,47 @@ export class AuthComponent {
 
   onLogin(form: any) {
     if (form.valid) {
+      this.isLoading = true; // tıklayınca loading başlasın
       this.authService.login(form.value).subscribe({
         next: (response: any) => {
           console.log('Login successful:', response);
           this.authService.saveToken(response.token);
           alert('Login successful!');
+          this.isLoading = false; // başarılı olunca loading kapansın
           this.router.navigate(['']);
         },
         error: (err: any) => {
           console.error('Login error:', err);
           alert('Login failed. Please check your credentials.');
-        }        
+          this.isLoading = false; // Hata olursa da loading kapansın
+        }
       });
     }
   }
 
   onRegister(form: any) {
     if (form.valid) {
+      this.isLoading = true; // Tıklayınca loading başlasın
+
       this.authService.register(form.value).subscribe({
         next: (response: any) => {
           console.log('Register successful:', response);
           alert('Registration successful! Now you can log in.');
+          this.isLoading = false; // Başarılı olunca loading kapansın
           this.mode = 'login';
         },
         error: (err: any) => {
           console.error('Register error:', err);
           alert('Registration failed. Please try again.');
-        }        
+          this.isLoading = false; // Hata olursa loading kapansın
+        }
       });
     }
   }
+
+
+  toggleMode() {
+    this.mode = this.mode === 'login' ? 'register' : 'login';
+  }
+
 }

@@ -1,0 +1,105 @@
+.auth-wrapper {
+    margin-top: -34px;
+    display: flex;
+    min-height: calc(100vh - 66px);;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Sol taraftaki görsel alan */
+.auth-image-side {
+    flex: 1;
+    background: url('/assets/kibris.jpg') no-repeat center center/cover;
+    position: relative;
+    transition: 0.5s ease;
+}
+
+/* Görselin üzerindeki yazılar */
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    margin-top: 140px;
+}
+
+.overlay-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.overlay-text p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.switch-btn {
+    background-color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.switch-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Sağ taraftaki form alanı */
+.auth-form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 2rem;
+}
+
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form başlık */
+form h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Input kutuları */
+form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Submit buton */
+.submit-btn {
+    width: 100%;
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #e0a800;
+}

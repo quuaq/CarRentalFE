@@ -1,55 +1,53 @@
-<div class="auth-container">
+<div class="auth-wrapper">
 
-    <div class="auth-buttons">
-      <button class="btn btn-primary" (click)="mode = 'login'">Login</button>
-      <button class="btn btn-secondary" (click)="mode = 'register'">Register</button>
+  <div class="auth-image-side" [class.shift]="mode === 'register'">
+    <div class="overlay-text">
+      <h2 *ngIf="mode === 'login'">Welcome Back!</h2>
+      <h2 *ngIf="mode === 'register'">Join Us!</h2>
+      <p *ngIf="mode === 'login'">Don't have an account?</p>
+      <p *ngIf="mode === 'register'">Already have an account?</p>
+      <button class="switch-btn" (click)="toggleMode()">
+        {{ mode === 'login' ? 'Register' : 'Login' }}
+      </button>
     </div>
-  
-    <div *ngIf="mode === 'login'" class="auth-form">
-      <h2>Login</h2>
-      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-        <div class="mb-3">
-          <label for="loginEmail" class="form-label">Email</label>
-          <input type="email" id="loginEmail" class="form-control" name="email" ngModel required>
-        </div>
-        <div class="mb-3">
-          <label for="loginPassword" class="form-label">Password</label>
-          <input type="password" id="loginPassword" class="form-control" name="password" ngModel required>
-        </div>
-        <button type="submit" class="btn btn-success w-100">Login</button>
-      </form>
-    </div>
-  
-    <div *ngIf="mode === 'register'" class="auth-form">
-      <h2>Register</h2>
-      <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
-        <div class="mb-3">
-          <label for="registerFirstName" class="form-label">First Name</label>
-          <input type="text" id="registerFirstName" class="form-control" name="firstName" ngModel required>
-        </div>
-        <div class="mb-3">
-          <label for="registerLastName" class="form-label">Last Name</label>
-          <input type="text" id="registerLastName" class="form-control" name="lastName" ngModel required>
-        </div>
-        <div class="mb-3">
-          <label for="registerTcNo" class="form-label">TC No</label>
-          <input type="text" id="registerTcNo" class="form-control" name="tcNo" ngModel required>
-        </div>
-        <div class="mb-3">
-          <label for="registerPhoneNumber" class="form-label">Phone Number</label>
-          <input type="text" id="registerPhoneNumber" class="form-control" name="phoneNumber" ngModel required>
-        </div>
-        <div class="mb-3">
-          <label for="registerEmail" class="form-label">Email</label>
-          <input type="email" id="registerEmail" class="form-control" name="email" ngModel required>
-        </div>
-        <div class="mb-3">
-          <label for="registerPassword" class="form-label">Password</label>
-          <input type="password" id="registerPassword" class="form-control" name="password" ngModel required>
-        </div>
-        <button type="submit" class="btn btn-warning w-100">Register</button>
-      </form>
-    </div>
-  
   </div>
-  
+
+  <div class="auth-form-side">
+    <div class="form-container">
+
+      <!-- Login Form -->
+      <form *ngIf="mode === 'login'" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email" name="email" ngModel required />
+        <input type="password" placeholder="Password" name="password" ngModel required />
+        <button type="submit" class="submit-btn" [disabled]="isLoading">
+          <ng-container *ngIf="!isLoading">Login</ng-container>
+          <ng-container *ngIf="isLoading">
+            <i class="spinner-border spinner-border-sm"></i> Loading...
+          </ng-container>
+        </button>
+        
+      </form>
+
+      <!-- Register Form -->
+      <form *ngIf="mode === 'register'" #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+        <h2>Register</h2>
+        <input type="text" placeholder="First Name" name="firstName" ngModel required />
+        <input type="text" placeholder="Last Name" name="lastName" ngModel required />
+        <input type="text" placeholder="TC No" name="tcNo" ngModel required />
+        <input type="text" placeholder="Phone Number" name="phoneNumber" ngModel required />
+        <input type="email" placeholder="Email" name="email" ngModel required />
+        <input type="password" placeholder="Password" name="password" ngModel required />
+        <button type="submit" class="submit-btn" [disabled]="isLoading">
+          <ng-container *ngIf="!isLoading">Register</ng-container>
+          <ng-container *ngIf="isLoading">
+            <i class="spinner-border spinner-border-sm"></i> Registering...
+          </ng-container>
+        </button>
+        
+      </form>
+
+    </div>
+  </div>
+
+</div>
