@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Tüm Rezervasyonlar</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Rezervasyon ID</th>
+          <th>User ID</th>
+          <th>Car</th>
+          <th>Start Date</th>
+          <th>Finish Date</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rez of reservations">
+          <td>{{ rez.reservation_ID }}</td>
+          <td>{{ rez.user_ID }}</td>
+          <td>{{ rez.car_ID }}</td>
+          <td>{{ rez.startDate | date: 'dd MMM yyyy HH:mm' }}</td>
+          <td>{{ rez.endDate | date: 'dd MMM yyyy HH:mm' }}</td>
+          <td>{{ rez.totalPrice }} ₺</td>
+          <td>{{ rez.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

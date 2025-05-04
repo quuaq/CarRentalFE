@@ -22,7 +22,7 @@
           <p class="card-text">Yıl: {{ car.year }}</p>
           <p class="card-text fw-bold">Günlük Fiyat: {{ car.pricePerDay }}₺</p>
           <p class="card-text text-success fw-bold">Toplam Fiyat: {{ car.totalPrice }}₺</p>
-          <a class="btn reserve-btn w-100">Şimdi Rezerve Et</a>
+          <a class="btn reserve-btn w-100" (click)="onReserve(car.car_ID, car.pricePerDay)">Şimdi Rezerve Et</a>
         </div>
       </div>
     </div>

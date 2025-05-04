@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs'; 
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -41,4 +42,33 @@ export class AuthService {
   private hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
+
+  getUserIdFromToken(): number | null {
+    const token = this.getToken();
+    if (!token) return null;
+  
+    try {
+      const decoded: any = jwtDecode(token);
+      return decoded.nameid ? parseInt(decoded.nameid) : null;
+    } catch (error) {
+      console.error('Token çözümleme hatası:', error);
+      return null;
+    }
+  }
+  
+  isAdmin(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+  
+    try {
+      const decoded: any = jwtDecode(token);  // düzeltildi
+      return decoded.role && decoded.role === 'Admin';
+    } catch (error) {
+      console.error('Token çözümleme hatası:', error);
+      return false;
+    }
+  }
+  
+  
+  
 }

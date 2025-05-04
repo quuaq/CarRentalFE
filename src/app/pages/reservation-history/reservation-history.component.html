@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h2 class="mb-4">My Reservations</h2>
+
+  <div *ngIf="reservations.length === 0">Hiç rezervasyon bulunamadı.</div>
+
+  <table class="table table-bordered table-striped" *ngIf="reservations.length > 0">
+    <thead>
+      <tr>
+        <!-- <th>Rezervasion ID</th>
+          <th>Car ID</th> -->
+        <th>Car</th>
+        <th>Start</th>
+        <th>Finish</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Process</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rez of reservations">
+        <!-- <td>{{ rez.reservation_ID }}</td>
+        td>{{ rez.car_ID }}</td> -->
+        <td>{{ rez.carName}}</td>
+        <td>{{ rez.startDate | date:'dd MMM yyyy HH:mm' }}</td>
+        <td>{{ rez.endDate | date:'dd MMM yyyy HH:mm' }}</td>
+        <td>{{ rez.totalPrice }} ₺</td>
+        <td>{{ rez.status }}</td>
+        <td class="text-center">
+          <button class="btn btn-success me-2" [disabled]="rez.status === 'Paid'" (click)="goToPayment(rez.reservation_ID!)"> <!--! işareti burada "eminim boş değil" anlamında kullanıldı-->
+            Go to Payment
+          </button>
+          <button class="btn btn-danger" [disabled]="rez.status === 'Paid'" (click)="cancelReservation(rez.reservation_ID)">
+            Cancel Reservation
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

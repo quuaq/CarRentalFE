@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../../services/car.service';
+import { ReservationService } from '../../services/reservation.service';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,16 +14,17 @@ import { CommonModule } from '@angular/common';
 })
 export class CarListComponent implements OnInit {
   cars: any[] = [];
-
-  constructor(
-    private route: ActivatedRoute,
-    private carService: CarService
-  ) { }
-
   startDate!: Date;
   endDate!: Date;
   dayCount: number = 0;
 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private carService: CarService,
+    private reservationService: ReservationService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -29,28 +32,50 @@ export class CarListComponent implements OnInit {
       const end = params['end'];
 
       if (start && end) {
-
-        const startDate = new Date(start);
-        const endDate = new Date(end);
-
-        const dayCount = Math.ceil(
-          (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
+        this.startDate = new Date(start);
+        this.endDate = new Date(end);
+        this.dayCount = Math.ceil(
+          (this.endDate.getTime() - this.startDate.getTime()) / (1000 * 3600 * 24)
         );
-
 
         this.carService.getAvailableCars(start, end).subscribe(data => {
           this.cars = data.map(car => ({
             ...car,
-            totalPrice: car.pricePerDay * dayCount
+            totalPrice: car.pricePerDay * this.dayCount
           }));
-          console.log(this.cars); // test amaçlı
         });
       }
-      this.startDate = new Date(start);
-      this.endDate = new Date(end);
-      this.dayCount = Math.ceil((this.endDate.getTime() - this.startDate.getTime()) / (1000 * 3600 * 24));
-
     });
+  }
 
+  onReserve(carId: number, pricePerDay: number) {
+    if (!this.authService.getToken()) {
+      alert("Rezervasyon yapabilmek için giriş yapmanız gerekiyor.");
+      this.router.navigate(['/auth']);
+      return;
+    }
+
+    const userId = this.authService.getUserIdFromToken();
+    if (userId === null) {
+      alert("Kullanıcı kimliği alınamadı. Lütfen tekrar giriş yapın.");
+      return;
+    }
+
+    const reservation = {
+      user_ID: userId,
+      car_ID: carId,
+      startDate: this.startDate.toISOString(),
+      endDate: this.endDate.toISOString(),
+      totalPrice: pricePerDay * this.dayCount,
+      status: 'Pending'
+    };
+
+    this.reservationService.createReservation(reservation).subscribe({
+      next: () => alert("Rezervasyon başarıyla oluşturuldu!"),
+      error: err => {
+        console.error("Rezervasyon hatası:", err);
+        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+      }
+    });
   }
 }
