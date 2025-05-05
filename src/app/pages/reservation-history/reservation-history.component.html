@@ -26,12 +26,19 @@
         <td>{{ rez.totalPrice }} ₺</td>
         <td>{{ rez.status }}</td>
         <td class="text-center">
-          <button class="btn btn-success me-2" [disabled]="rez.status === 'Paid'" (click)="goToPayment(rez.reservation_ID!)"> <!--! işareti burada "eminim boş değil" anlamında kullanıldı-->
+          <button class="btn btn-success me-2" [disabled]="rez.status === 'Paid'"
+            (click)="goToPayment(rez.reservation_ID!)"> <!--! işareti burada "eminim boş değil" anlamında kullanıldı-->
             Go to Payment
           </button>
-          <button class="btn btn-danger" [disabled]="rez.status === 'Paid'" (click)="cancelReservation(rez.reservation_ID)">
+          <button class="btn btn-danger" [disabled]="rez.status === 'Paid'"
+            (click)="cancelReservation(rez.reservation_ID)">
             Cancel Reservation
           </button>
+          <a *ngIf="rez.status === 'Paid' && rez.payment_ID != null" [routerLink]="['/invoice', rez.payment_ID]"
+            class="btn btn-secondary btn-sm ms-2">
+            View Invoice
+          </a>
+
         </td>
 
       </tr>

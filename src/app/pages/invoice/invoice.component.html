@@ -1,0 +1,59 @@
+<div class="container mt-5" *ngIf="invoice">
+    <h2 class="mb-4 text-center">Invoice Details</h2>
+  
+    <div class="card p-4 shadow">
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <strong>Invoice ID:</strong> {{ invoice.invoice_ID }}
+        </div>
+        <div class="col-md-6">
+          <strong>Invoice Date:</strong> {{ invoice.invoiceDate | date:'dd MMM yyyy HH:mm' }}
+        </div>
+      </div>
+  
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <strong>Payment ID:</strong> {{ invoice.payment_ID }}
+        </div>
+        <div class="col-md-6">
+          <strong>Total Amount:</strong> {{ invoice.totalAmount | currency:'TRY':'symbol' }}
+        </div>
+      </div>
+  
+      <hr>
+  
+      <h5 class="mb-3">Reservation Info</h5>
+  
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <strong>Car:</strong> {{ invoice.carName }}
+        </div>
+        <div class="col-md-6">
+          <strong>User ID:</strong> {{ invoice.user_ID }}
+        </div>
+      </div>
+  
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <strong>Start Date:</strong> {{ invoice.startDate | date:'dd MMM yyyy HH:mm' }}
+        </div>
+        <div class="col-md-6">
+          <strong>End Date:</strong> {{ invoice.endDate | date:'dd MMM yyyy HH:mm' }}
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6">
+          <strong>Status:</strong> {{ invoice.status }}
+        </div>
+        <div class="col-md-6">
+          <strong>Payment Method:</strong> {{ invoice.paymentMethod }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!invoice" class="text-center mt-5">
+    <p>Loading invoice...</p>
+  </div>
+  

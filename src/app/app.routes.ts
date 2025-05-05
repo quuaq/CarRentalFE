@@ -9,14 +9,19 @@ import { AdminReservationsComponent } from './pages/admin-reservations/admin-res
 
 
 export const routes: Routes = [
-  {path: '', component: HomeComponent}, //Ana sayfa olarak Home 
-  {path: 'about', component: AboutComponent},
-  {path: 'cars', component: CarsComponent},
-  {path: 'car-list', component: CarListComponent},
-  {path: 'auth', component: AuthComponent},
-  {path: 'my-reservations', component:ReservationHistoryComponent},
-  {path: 'admin-reservations', component:AdminReservationsComponent},
-  {path: 'payment',
-   loadComponent: () => import('./pages/payment/payment.component').then(m => m.PaymentComponent) // lazy yükleme yaptın. bu işlem performansı arttırır, başlangıç paketini küçültür. 
+  { path: '', component: HomeComponent }, //Ana sayfa olarak Home 
+  { path: 'about', component: AboutComponent },
+  { path: 'cars', component: CarsComponent },
+  { path: 'car-list', component: CarListComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: 'my-reservations', component: ReservationHistoryComponent },
+  { path: 'admin-reservations', component: AdminReservationsComponent },
+  {
+    path: 'payment',
+    loadComponent: () => import('./pages/payment/payment.component').then(m => m.PaymentComponent) // lazy yükleme yaptın. bu işlem performansı arttırır, başlangıç paketini küçültür. 
+  },
+  {
+    path: 'invoice/:paymentId',
+    loadComponent: () => import('./pages/invoice/invoice.component').then(m => m.InvoiceComponent)
   }
 ];

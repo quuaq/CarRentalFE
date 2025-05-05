@@ -11,6 +11,7 @@ export interface ReservationDTO {
   endDate: string;
   totalPrice: number;
   status?: string;
+  payment_ID?: number;  
 }
 
 @Injectable({
