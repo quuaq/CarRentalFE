@@ -1,10 +1,14 @@
 .auth-wrapper {
-    margin-top: -34px;
+    position: relative;
     display: flex;
-    min-height: calc(100vh - 66px);;
+    height: 100vh; /* Ekranı tam kaplasın */
+    margin: 0;      /* Gereksiz boşlukları sıfırla */
+    padding: 0;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
 }
+
+
 
 /* Sol taraftaki görsel alan */
 .auth-image-side {

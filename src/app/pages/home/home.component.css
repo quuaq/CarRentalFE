@@ -1,63 +1,41 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+
 .banner-container {
   position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.banner-container img {
-  margin-top: -33.5px;
-  padding: 0;
-  display: block; 
-  width: 100%;
-  height: auto;
-}
-
-.reservation-form-overlay {
+.banner-overlay {
   position: absolute;
-  top: 50%; 
-  right: 5%;
-  transform: translateY(-50%);
-  width: 500px;
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(5px);
-  padding: 1.5rem;
-  margin-top: 50px;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+}
+
+.welcome-box {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  margin-left: 90px;
   border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  opacity: 0.7;
-  transition: opacity 0.5s ease-in-out;
+  max-width: 400px;
+  backdrop-filter: blur(2px);
 }
 
-
-.reservation-form-overlay:hover{
-  opacity: 1;
-  
+.welcome-box .brand {
+  color: #ffc107;
+  font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .reservation-form-overlay {
-    position: static;
-    width: 100%;
-    margin: 2rem auto 0 auto;
-    transform: none;
-    box-shadow: none;
-  }
- 
-  .car-img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  .carousel-caption{
-    font-size: 0.8rem;
-    padding: 0.5rem;
-  }
-}
 .carousel-wrapper {
-  width: 70%;
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
+  width: 100%;
+  max-width: 570px;
 }
 
 .car-img {
@@ -73,24 +51,64 @@
   border-radius: 10px;
 }
 
-
-
-.info-box {
+.map-container {
+  height: 400px;
   width: 100%;
-  max-width: 500px;
-  background-color: #782d2d;
-  color: #fff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
 }
 
 
-.custom-bg {
-  background-color: #3dbd2f;
-  min-height: 100%; /* varsa kaldır */
+.flip-card {
+  width: 100%;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
   height: 100%;
-  padding: 4rem 2rem;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  padding: 1rem;
+  background-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front {
   display: flex;
-  align-items: center; /* dikey ortalama için */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 1rem;
+  background-color: #fff; /* <-- bu çok önemli */
+  border-radius: 15px;
 }

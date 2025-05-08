@@ -1,115 +1,301 @@
 <div class="banner-container position-relative">
   <img src="assets/cyprus-bg.jpg" alt="Cyprus Banner" class="img-fluid w-100" style="height: 100vh; object-fit: cover;">
 
-  <div class="reservation-form-overlay position-absolute">
-    <form #rentalForm="ngForm" (ngSubmit)="onSubmit(rentalForm)">
-      <div class="row g-3">
-        <div class="col-12">
-          <label for="pickupLocation" class="form-label fw-bold">Pick-up Location</label>
-          <input type="text" id="pickupLocation" class="form-control" value="Ercan Airport" disabled>
-        </div>
+  <div class="banner-overlay d-flex justify-content-between align-items-center px-5">
 
-        <div class="col-6">
-          <label for="startDate" class="form-label fw-bold">Pick-up Date</label>
-          <input type="date" id="startDate" name="startDate" class="form-control" ngModel>
-        </div>
+    <div class="welcome-box">
+      <h1>Welcome to <span class="brand">CYCARRE</span></h1>
+      <p>The easiest way to rent a car in North Cyprus</p>
+    </div>
 
-        <div class="col-6">
-          <label for="startTime" class="form-label fw-bold">Pick-up Time</label>
-          <input type="time" id="startTime" name="startTime" class="form-control" ngModel>
-        </div>
 
-        <div class="col-6">
-          <label for="endDate" class="form-label fw-bold">Return Date</label>
-          <input type="date" id="endDate" name="endDate" class="form-control" ngModel>
-        </div>
+    <div class="carousel-wrapper">
+      <div id="carCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner text-center">
+          <div class="carousel-item active">
+            <div class="flip-card" [class.flipped]="flippedCard === 'bmw'">
+              <div class="flip-card-inner">
+                <div class="flip-card-front position-relative">
+                  <img src="assets/cars/bmw.jpg" class="car-img" alt="BMW E36" />
+                  <div class="carousel-caption d-block">
+                    <h5>BMW E36</h5>
+                    <p>Powerful and stylish sedan model.</p>
+                    <button class="btn btn-warning mt-2" (click)="showDetails('bmw')">More Info</button>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Vehicle Features</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-people-fill me-2"></i>5 Adults</li>
+                        <li class="mb-2"><i class="bi bi-suitcase-fill me-2"></i>2 Large Suitcases</li>
+                        <li class="mb-2"><i class="bi bi-airplane-engines me-2"></i>Passenger Airbag</li>
+                        <li class="mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>ABS</li>
+                        <li class="mb-2"><i class="bi bi-fuel-pump-fill me-2"></i>Petrol</li>
+                        <li class="mb-2"><i class="bi bi-gear-fill me-2"></i>Manual</li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Rental Conditions</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i>21 Years or Older</li>
+                        <li class="mb-2"><i class="bi bi-person-fill-check me-2"></i>Minimum 1 Year Driving License</li>
+                        <li class="mb-2"><i class="bi bi-credit-card-2-front-fill me-2"></i>1 Credit Card</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success mt-2" (click)="scrollToReservation()" style="margin-right: 5px;">Make a Reservation</button>
+                    <button class="btn btn-secondary mt-2" (click)="hideDetails()">Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="col-6">
-          <label for="endTime" class="form-label fw-bold">Return Time</label>
-          <input type="time" id="endTime" name="endTime" class="form-control" ngModel>
-        </div>
+          <div class="carousel-item">
+            <div class="flip-card" [class.flipped]="flippedCard === 'mercedes'">
+              <div class="flip-card-inner">
+                <div class="flip-card-front position-relative">
+                  <img src="assets/cars/mercedes-benz.jpg" class="car-img" alt="Mercedes E200" />
+                  <div class="carousel-caption d-block">
+                    <h5>Mercedes E200</h5>
+                    <p>Luxury and comfort combined in a premium sedan.</p>
+                    <button class="btn btn-warning mt-2" (click)="showDetails('mercedes')">More Info</button>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Vehicle Features</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-people-fill me-2"></i>5 Adults</li>
+                        <li class="mb-2"><i class="bi bi-suitcase-fill me-2"></i>3 Large Suitcases</li>
+                        <li class="mb-2"><i class="bi bi-airplane-engines me-2"></i>Front & Side Airbags</li>
+                        <li class="mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>ABS + ESP</li>
+                        <li class="mb-2"><i class="bi bi-fuel-pump-fill me-2"></i>Diesel</li>
+                        <li class="mb-2"><i class="bi bi-gear-fill me-2"></i>Automatic</li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Rental Conditions</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i>25 Years or Older</li>
+                        <li class="mb-2"><i class="bi bi-person-fill-check me-2"></i>Minimum 2 Years Driving License
+                        </li>
+                        <li class="mb-2"><i class="bi bi-credit-card-2-front-fill me-2"></i>1 Credit Card Required</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success mt-2" (click)="scrollToReservation()" style="margin-right: 5px;">Make a Reservation</button>
+                    <button class="btn btn-secondary mt-2" (click)="hideDetails()">Back</button>
+                  </div>
+                </div>
 
-        <div class="col-12 d-flex align-items-center">
-          <input type="checkbox" id="dropDiffLocation" class="form-check-input me-2">
-          <label for="dropDiffLocation" class="form-check-label">I want to drop off at a different location</label>
-        </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="col-12">
-          <button type="submit" class="btn btn-warning w-100 fw-bold">Check Availability</button>
+          <div class="carousel-item">
+            <div class="flip-card" [class.flipped]="flippedCard === 'audi'">
+              <div class="flip-card-inner">
+
+                <div class="flip-card-front position-relative">
+                  <img src="assets/cars/audi.jpg" class="car-img" alt="Audi A3" />
+                  <div class="carousel-caption d-block">
+                    <h5>Audi A3</h5>
+                    <p>Urban premium hatchback model.</p>
+                    <button class="btn btn-warning" (click)="showDetails('audi')">More Info</button>
+                  </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Vehicle Features</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-people-fill me-2"></i>5 Adults</li>
+                        <li class="mb-2"><i class="bi bi-suitcase-fill me-2"></i>2 Large Suitcases</li>
+                        <li class="mb-2"><i class="bi bi-airplane-engines me-2"></i>Passenger Airbag</li>
+                        <li class="mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>ABS</li>
+                        <li class="mb-2"><i class="bi bi-fuel-pump-fill me-2"></i>Petrol</li>
+                        <li class="mb-2"><i class="bi bi-gear-fill me-2"></i>Automatic</li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Rental Conditions</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i>21 Years or Older</li>
+                        <li class="mb-2"><i class="bi bi-person-fill-check me-2"></i>Minimum 1 Year Driving License</li>
+                        <li class="mb-2"><i class="bi bi-credit-card-2-front-fill me-2"></i>1 Credit Card</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success mt-2" (click)="scrollToReservation()" style="margin-right: 5px;">Make a Reservation</button>
+                    <button class="btn btn-secondary mt-2" (click)="hideDetails()">Back</button>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="flip-card" [class.flipped]="flippedCard === 'ford'">
+              <div class="flip-card-inner">
+                <div class="flip-card-front position-relative">
+                  <img src="assets/cars/ford.jpg" class="car-img" alt="Ford Focus" />
+                  <div class="carousel-caption d-block">
+                    <h5>Ford Focus</h5>
+                    <p>Economical and practical compact car.</p>
+                    <button class="btn btn-warning mt-2" (click)="showDetails('ford')">More Info</button>
+                  </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Vehicle Features</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-people-fill me-2"></i>5 Adults</li>
+                        <li class="mb-2"><i class="bi bi-suitcase-fill me-2"></i>2 Medium Suitcases</li>
+                        <li class="mb-2"><i class="bi bi-airplane-engines me-2"></i>Passenger Airbag</li>
+                        <li class="mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>ABS</li>
+                        <li class="mb-2"><i class="bi bi-fuel-pump-fill me-2"></i>Petrol</li>
+                        <li class="mb-2"><i class="bi bi-gear-fill me-2"></i>Manual</li>
+                      </ul>
+                    </div>
+
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Rental Conditions</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i>21 Years or Older</li>
+                        <li class="mb-2"><i class="bi bi-person-fill-check me-2"></i>Minimum 1 Year Driving License</li>
+                        <li class="mb-2"><i class="bi bi-credit-card-2-front-fill me-2"></i>1 Credit Card</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success mt-2" (click)="scrollToReservation()" style="margin-right: 5px;">Make a Reservation</button>
+                    <button class="btn btn-secondary mt-2" (click)="hideDetails()">Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="flip-card" [class.flipped]="flippedCard === 'hyundai'">
+              <div class="flip-card-inner">
+                <div class="flip-card-front position-relative">
+                  <img src="assets/cars/hyundai.jpg" class="car-img" alt="Hyundai i20" />
+                  <div class="carousel-caption d-block">
+                    <h5>Hyundai i20</h5>
+                    <p>Fuel-efficient and city-friendly hatchback.</p>
+                    <button class="btn btn-warning mt-2" (click)="showDetails('hyundai')">More Info</button>
+                  </div>
+                </div>
+          
+                <div class="flip-card-back">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Vehicle Features</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-people-fill me-2"></i>5 Adults</li>
+                        <li class="mb-2"><i class="bi bi-suitcase-fill me-2"></i>2 Small Suitcases</li>
+                        <li class="mb-2"><i class="bi bi-airplane-engines me-2"></i>Passenger Airbag</li>
+                        <li class="mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>ABS</li>
+                        <li class="mb-2"><i class="bi bi-fuel-pump-fill me-2"></i>Petrol</li>
+                        <li class="mb-2"><i class="bi bi-gear-fill me-2"></i>Automatic</li>
+                      </ul>
+                    </div>
+          
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Rental Conditions</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i>20 Years or Older</li>
+                        <li class="mb-2"><i class="bi bi-person-fill-check me-2"></i>Minimum 1 Year Driving License</li>
+                        <li class="mb-2"><i class="bi bi-credit-card-2-front-fill me-2"></i>1 Credit Card</li>
+                      </ul>
+                    </div>
+                  </div>
+          
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success mt-2" (click)="scrollToReservation()" style="margin-right: 5px;">Make a Reservation</button>
+                    <button class="btn btn-secondary mt-2" (click)="hideDetails()">Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 
 
+
+
+
+
 <div class="container my-5">
-  <div class="row align-items-center">
+  <div class="row align-items-start">
 
-    <!-- Left: Carousel -->
-    <div class="col-lg-6 mb-4 mb-lg-0">
-      <div id="carCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner text-center">
-          <div class="carousel-item active">
-            <img src="assets/cars/bmw.jpg" class="car-img" alt="BMW X5">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>BMW X5</h5>
-              <p>Güçlü ve şık SUV modeli.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cars/mercedes-benz.jpg" class="car-img" alt="Mercedes E200">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mercedes E200</h5>
-              <p>Konfor ve performansın buluştuğu sedan.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cars/audi.jpg" class="car-img" alt="Audi A3">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Audi A3</h5>
-              <p>Şehir içi premium hatchback modeli.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cars/ford.jpg" class="car-img" alt="Ford Focus">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Ford Focus</h5>
-              <p>Bütçeye uygun</p>
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+    <div class="col-lg-6 mb-4">
+      <div class="map-container">
+        <div id="map"></div>
       </div>
     </div>
 
-    <!-- Right: Info Box -->
-    <div class="col-lg-6 custom-bg p-5" style="min-height: 400px;">
-      <div class="info-box p-4 rounded shadow-sm">
-        <h4 class="fw-bold text-primary">Güvenli ve Uygun Araç Kiralama</h4>
-        <p>Havalimanı teslim, anında rezervasyon ve cazip fiyatlarla konforlu sürüş seni bekliyor.</p>
-        <ul>
-          <li>Geniş araç filosu</li>
-          <li>Online ödeme imkanı</li>
-          <li>7/24 destek</li>
-        </ul>
-        <button class="btn btn-success">Detayları Gör</button>
-      </div>
-    </div>
 
+    <div class="col-lg-6">
+      <form #rentalForm="ngForm" (ngSubmit)="onSubmit(rentalForm)" class="p-4 bg-white rounded shadow-sm">
+        <div class="row g-3">
+
+          <div class="col-12">
+            <label class="form-label fw-bold">Pick-up Location</label>
+            <select class="form-select" [(ngModel)]="selectedLocation" name="pickupLocation" (change)="updateMap()">
+              <option *ngFor="let loc of locations" [value]="loc.name">{{ loc.name }}</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label class="form-label fw-bold">Pick-up Date</label>
+            <input type="date" name="startDate" class="form-control" ngModel>
+          </div>
+          <div class="col-6">
+            <label class="form-label fw-bold">Pick-up Time</label>
+            <input type="time" name="startTime" class="form-control" ngModel>
+          </div>
+          <div class="col-6">
+            <label class="form-label fw-bold">Return Date</label>
+            <input type="date" name="endDate" class="form-control" ngModel>
+          </div>
+          <div class="col-6">
+            <label class="form-label fw-bold">Return Time</label>
+            <input type="time" name="endTime" class="form-control" ngModel>
+          </div>
+          <div class="col-12 d-flex align-items-center">
+            <input type="checkbox" id="dropDiffLocation" class="form-check-input me-2">
+            <label for="dropDiffLocation" class="form-check-label">I want to drop off at a different location</label>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-warning w-100 fw-bold">Check Availability</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
