@@ -35,67 +35,81 @@
         </div>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-warning w-100 fw-bold">Check Availiability</button>
+          <button type="submit" class="btn btn-warning w-100 fw-bold">Check Availability</button>
         </div>
       </div>
     </form>
   </div>
 </div>
-<!-- Banner ve Form Biter -->
 
-<!-- Yeni: Carousel Wrapper -->
-<div class="carousel-wrapper mx-auto my-5">
-  <div id="carCarousel" class="carousel slide carousel-fade mt-5" data-bs-ride="carousel" data-bs-interval="3000">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+<div class="container my-5">
+  <div class="row align-items-center">
+
+    <!-- Left: Carousel -->
+    <div class="col-lg-6 mb-4 mb-lg-0">
+      <div id="carCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner text-center">
+          <div class="carousel-item active">
+            <img src="assets/cars/bmw.jpg" class="car-img" alt="BMW X5">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>BMW X5</h5>
+              <p>Güçlü ve şık SUV modeli.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/cars/mercedes-benz.jpg" class="car-img" alt="Mercedes E200">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mercedes E200</h5>
+              <p>Konfor ve performansın buluştuğu sedan.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/cars/audi.jpg" class="car-img" alt="Audi A3">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Audi A3</h5>
+              <p>Şehir içi premium hatchback modeli.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/cars/ford.jpg" class="car-img" alt="Ford Focus">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Ford Focus</h5>
+              <p>Bütçeye uygun</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
-    <div class="carousel-inner text-center">
 
-      <div class="carousel-item active">
-        <img src="assets/cars/bmw.jpg" class="car-img" alt="BMW X5">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>BMW X5</h5>
-          <p>Güçlü ve şık SUV modeli.</p>
-        </div>
+    <!-- Right: Info Box -->
+    <div class="col-lg-6 custom-bg p-5" style="min-height: 400px;">
+      <div class="info-box p-4 rounded shadow-sm">
+        <h4 class="fw-bold text-primary">Güvenli ve Uygun Araç Kiralama</h4>
+        <p>Havalimanı teslim, anında rezervasyon ve cazip fiyatlarla konforlu sürüş seni bekliyor.</p>
+        <ul>
+          <li>Geniş araç filosu</li>
+          <li>Online ödeme imkanı</li>
+          <li>7/24 destek</li>
+        </ul>
+        <button class="btn btn-success">Detayları Gör</button>
       </div>
-
-      <div class="carousel-item">
-        <img src="assets/cars/mercedes-benz.jpg" class="car-img" alt="Mercedes E200">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Mercedes E200</h5>
-          <p>Konfor ve performansın buluştuğu sedan.</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="assets/cars/audi.jpg" class="car-img" alt="Audi A3">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Audi A3</h5>
-          <p>Şehir içi premium hatchback modeli.</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="assets/cars/ford.jpg" class="car-img" alt="Ford-Focus">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Ford Focus</h5>
-          <p>Bütçeye uygun</p>
-        </div>
-      </div>
-
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 </div>
-<!-- Carousel Wrapper Biter -->

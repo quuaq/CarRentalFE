@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import  Swal from 'sweetalert2';
 declare var bootstrap: any;
 
 
@@ -31,11 +32,21 @@ export class HomeComponent implements AfterViewInit {
     const startTime = form.value.startTime;
     const endDate = form.value.endDate;
     const endTime = form.value.endTime;
-
-    // Tarih ve saatleri ISO formatına çeviriyoruz
+  
+    if (!startDate || !startTime || !endDate || !endTime) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Missing Information!',
+        text: 'Please fill in all date and time fields.',
+        confirmButtonText: 'OK'
+      });
+      return;
+    }
+  
+    
     const pickupDateTime = `${startDate}T${startTime}`;
     const returnDateTime = `${endDate}T${endTime}`;
-
+  
     this.router.navigate(['/car-list'], {
       queryParams: {
         start: pickupDateTime,
@@ -43,4 +54,5 @@ export class HomeComponent implements AfterViewInit {
       }
     });
   }
+  
 }
