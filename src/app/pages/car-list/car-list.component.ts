@@ -14,9 +14,10 @@ import { CommonModule } from '@angular/common';
 })
 export class CarListComponent implements OnInit {
   cars: any[] = [];
-  startDate!: Date;
-  endDate!: Date;
+  startDate?: Date;
+  endDate?: Date;
   dayCount: number = 0;
+  showPrices: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class CarListComponent implements OnInit {
       const end = params['end'];
 
       if (start && end) {
+        this.showPrices = true;
         this.startDate = new Date(start);
         this.endDate = new Date(end);
         this.dayCount = Math.ceil(
@@ -44,11 +46,22 @@ export class CarListComponent implements OnInit {
             totalPrice: car.pricePerDay * this.dayCount
           }));
         });
+      } else {
+        this.showPrices = false;
+        this.carService.getAllCars().subscribe((data: any[]) => {
+          this.cars = data;
+        });
       }
     });
   }
 
   onReserve(carId: number, pricePerDay: number) {
+    if (!this.startDate || !this.endDate) {
+      alert("Araç rezervasyonu yapmadan önce giriş yapmanız ve ardından tarih seçmeniz gerekiyor");
+      this.router.navigate(['/auth']); // Anasayfaya gidecek
+      return;
+    }
+
     if (!this.authService.getToken()) {
       alert("Rezervasyon yapabilmek için giriş yapmanız gerekiyor.");
       this.router.navigate(['/auth']);
@@ -78,4 +91,5 @@ export class CarListComponent implements OnInit {
       }
     });
   }
+
 }

@@ -12,4 +12,8 @@ export class CarService {
     return this.http.get<any[]>(`https://localhost:44321/api/Cars/available?start=${startDateTime}&end=${endDateTime}`);
   }
 
+  getAllCars() {
+    return this.http.get<any[]>('https://localhost:44321/api/Cars');
+  }
+
 }

@@ -1,8 +1,8 @@
 .auth-wrapper {
     position: relative;
     display: flex;
-    height: 100vh; /* Ekranı tam kaplasın */
-    margin: 0;      /* Gereksiz boşlukları sıfırla */
+    height: 100vh; 
+    margin: 0;      
     padding: 0;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
@@ -70,6 +70,7 @@
     padding: 2rem;
     border-radius: 10px;
     width: 100%;
+    margin-top: 55px;
     max-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -79,6 +80,7 @@ form h2 {
     text-align: center;
     margin-bottom: 2rem;
     color: #333;
+    font-size: 1.8rem;
 }
 
 /* Input kutuları */
@@ -88,7 +90,7 @@ form input {
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 /* Submit buton */

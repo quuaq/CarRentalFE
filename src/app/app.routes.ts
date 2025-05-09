@@ -11,7 +11,7 @@ import { AdminReservationsComponent } from './pages/admin-reservations/admin-res
 export const routes: Routes = [
   { path: '', component: HomeComponent }, //Ana sayfa olarak Home 
   { path: 'about', component: AboutComponent },
-  { path: 'cars', component: CarsComponent },
+  { path: 'cars', component: CarListComponent },
   { path: 'car-list', component: CarListComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'my-reservations', component: ReservationHistoryComponent },
