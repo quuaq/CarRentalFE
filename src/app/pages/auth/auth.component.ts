@@ -34,6 +34,7 @@ export class AuthComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       phoneNumber: new FormControl('', Validators.required),
       tcNo: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
+      licenseNumber: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }

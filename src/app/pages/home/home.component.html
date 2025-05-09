@@ -110,7 +110,52 @@
                     <button class="btn btn-warning" (click)="showDetails('audi')">More Info</button>
                   </div>
                 </div>
+                <div class="flip-card-back">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Vehicle Features</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-people-fill me-2"></i>5 Adults</li>
+                        <li class="mb-2"><i class="bi bi-suitcase-fill me-2"></i>2 Large Suitcases</li>
+                        <li class="mb-2"><i class="bi bi-airplane-engines me-2"></i>Passenger Airbag</li>
+                        <li class="mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>ABS</li>
+                        <li class="mb-2"><i class="bi bi-fuel-pump-fill me-2"></i>Petrol</li>
+                        <li class="mb-2"><i class="bi bi-gear-fill me-2"></i>Automatic</li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <h6 class="fw-bold border-bottom pb-2 mb-3">Rental Conditions</h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i>21 Years or Older</li>
+                        <li class="mb-2"><i class="bi bi-person-fill-check me-2"></i>Minimum 1 Year Driving License</li>
+                        <li class="mb-2"><i class="bi bi-credit-card-2-front-fill me-2"></i>1 Credit Card</li>
+                      </ul>
+                    </div>
+                  </div>
 
+                  <div class="text-center mt-4">
+                    <button class="btn btn-success mt-2" (click)="scrollToReservation()" style="margin-right: 5px;">Make a Reservation</button>
+                    <button class="btn btn-secondary mt-2" (click)="hideDetails()">Back</button>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="flip-card" [class.flipped]="flippedCard === 'audi'">
+              <div class="flip-card-inner">
+
+                <div class="flip-card-front position-relative">
+                  <img src="assets/cars/volkswagen.jpg" class="car-img" alt="Valkswagen Golf4" />
+                  <div class="carousel-caption d-block">
+                    <h5>Valkswagen Golf4</h5>
+                    <p>Urban premium hatchback model.</p>
+                    <button class="btn btn-warning" (click)="showDetails('audi')">More Info</button>
+                  </div>
+                </div>
                 <div class="flip-card-back">
                   <div class="row">
                     <div class="col-6">
@@ -156,7 +201,6 @@
                     <button class="btn btn-warning mt-2" (click)="showDetails('ford')">More Info</button>
                   </div>
                 </div>
-
                 <div class="flip-card-back">
                   <div class="row">
                     <div class="col-6">
@@ -200,7 +244,6 @@
                     <button class="btn btn-warning mt-2" (click)="showDetails('hyundai')">More Info</button>
                   </div>
                 </div>
-          
                 <div class="flip-card-back">
                   <div class="row">
                     <div class="col-6">
