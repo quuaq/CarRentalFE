@@ -4,6 +4,8 @@ import { CarService } from '../../services/car.service';
 import { ReservationService } from '../../services/reservation.service';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-car-list',
@@ -57,14 +59,26 @@ export class CarListComponent implements OnInit {
 
   onReserve(carId: number, pricePerDay: number) {
     if (!this.startDate || !this.endDate) {
-      alert("Araç rezervasyonu yapmadan önce giriş yapmanız ve ardından tarih seçmeniz gerekiyor");
-      this.router.navigate(['/auth']); // Anasayfaya gidecek
+      Swal.fire({
+        icon: 'info',
+        title: 'Date Selection Required',
+        text: 'Please select the date for booking the car',
+        confirmButtonText: 'Select Date',
+      }).then(() =>{
+        this.router.navigate(['/']);
+      });
       return;
     }
 
     if (!this.authService.getToken()) {
-      alert("Rezervasyon yapabilmek için giriş yapmanız gerekiyor.");
-      this.router.navigate(['/auth']);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Login Required',
+        text: 'Please login to make a reservation.',
+        confirmButtonText: 'Login',
+      }).then(() =>{
+        this.router.navigate(['/auth']);
+      })
       return;
     }
 

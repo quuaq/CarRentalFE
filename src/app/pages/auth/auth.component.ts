@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -40,23 +41,43 @@ export class AuthComponent {
   }
 
   onLogin(form: any) {
-    if (form.valid) {
-      this.isLoading = true; // tıklayınca loading başlasın
-      this.authService.login(form.value).subscribe({
-        next: (response: any) => {
-          console.log('Login successful:', response);
-          this.authService.saveToken(response.token);
-          alert('Login successful!');
-          this.isLoading = false; // başarılı olunca loading kapansın
-          this.router.navigate(['']);
-        },
-        error: (err: any) => {
-          console.error('Login error:', err);
-          alert('Login failed. Please check your credentials.');
-          this.isLoading = false; // Hata olursa da loading kapansın
-        }
+    if (form.invalid) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Incomplete Information!',
+        text: 'Please fill in all fields and enter valid information.',
+        confirmButtonText: 'OK'
       });
+      return;
     }
+
+    this.isLoading = true;
+    this.authService.login(form.value).subscribe({
+      next: (response: any) => {
+        console.log('Login successful:', response);
+        this.authService.saveToken(response.token);
+        Swal.fire({
+          icon: 'success',
+          title: 'Login Success!',
+          text: 'You are routing home page...',
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+          this.isLoading = false;
+          this.router.navigate(['']);
+        });
+      },
+      error: (err: any) => {
+        console.error('Login error:', err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed!',
+          text: 'The email or password is incorrect. Please try again.',
+          confirmButtonText: 'OK'
+        });
+        this.isLoading = false;
+      }
+    });
   }
 
   onRegister(form: any) {

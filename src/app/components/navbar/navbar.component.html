@@ -22,7 +22,7 @@
           <a class="nav-link" routerLink="/cars" routerLinkActive="active">Cars</a>
         </li>
         <li *ngIf="isLoggedIn && !isAdmin" class="nav-item me-3">
-          <a routerLink="/my-reservations" class="nav-link">My Reservations</a>
+          <a routerLink="/my-reservations" class="nav-link" routerLinkActive="active">My Reservations</a>
         </li>
         <li *ngIf="isLoggedIn && isAdmin" class="nav-item me-3">
           <a routerLink="/admin-reservations" class="nav-link">All Reservations</a>

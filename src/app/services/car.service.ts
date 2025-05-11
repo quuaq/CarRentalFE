@@ -6,14 +6,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CarService {
 
-  constructor(private http: HttpClient) { }
+  private apiUrl = 'https://localhost:44321/api/Cars';
+
+  constructor(private http: HttpClient) {}
 
   getAvailableCars(startDateTime: string, endDateTime: string) {
-    return this.http.get<any[]>(`https://localhost:44321/api/Cars/available?start=${startDateTime}&end=${endDateTime}`);
+    return this.http.get<any[]>(`${this.apiUrl}/available?start=${startDateTime}&end=${endDateTime}`);
   }
 
   getAllCars() {
-    return this.http.get<any[]>('https://localhost:44321/api/Cars');
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
-
 }
