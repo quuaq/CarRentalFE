@@ -15,12 +15,17 @@ import { ReservationService, ReservationDTO } from '../../services/reservation.s
 export class PaymentComponent implements OnInit {
   reservationId!: number;
 
+  cardHolder: string = '';
+  cardNumber: string = '';
+  expiryDate: string = '';
+  cvv: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private paymentService: PaymentService,
     private reservationService: ReservationService
-  ) {}
+  ) { }
 
   amount!: number;
 
@@ -45,7 +50,7 @@ export class PaymentComponent implements OnInit {
       const payment = {
         reservation_ID: this.reservationId,
         paymentDate: new Date(Date.now() + 5 * 60 * 1000), // Şu anki zamana +5 dakika
-        amount: this.amount, 
+        amount: this.amount,
         paymentMethod: 'Kredi Kartı',
         paymentStatus: 'Paid'
       };
@@ -62,6 +67,19 @@ export class PaymentComponent implements OnInit {
       });
     } else {
       alert("Lütfen tüm alanları doldurunuz!");
+    }
+  }
+
+  cardType: string = '';
+
+  onCardNumberChange(event: any) {
+    const number = event.target.value;
+    if (number.startsWith('4')) {
+      this.cardType = 'visa';
+    } else if (/^5[1-5]/.test(number) || /^2[2-7]/.test(number)) {
+      this.cardType = 'mastercard';
+    } else {
+      this.cardType = '';
     }
   }
 }

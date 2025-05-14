@@ -31,9 +31,16 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    this.loggedIn.next(false); 
+  const userId = this.getUserIdFromToken();
+
+  if (userId) {
+    this.http.post(`${this.apiUrl}/logout`, userId).subscribe(); 
   }
+
+  localStorage.removeItem('token');
+  this.loggedIn.next(false);
+}
+
 
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();

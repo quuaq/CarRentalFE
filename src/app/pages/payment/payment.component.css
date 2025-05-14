@@ -1,0 +1,58 @@
+.payment-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.payment-form {
+  flex: 1;
+}
+
+.card-preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.card h4 {
+  margin: 30px 0 10px;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.card p {
+  margin: 5px 0;
+}
+
+.card-chip {
+  width: 50px;
+  height: 30px;
+  background-color: gold;
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.card-logo {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+}
+
+.card-logo img {
+  width: 50px;
+  height: auto;
+}

@@ -1,28 +1,45 @@
-<div class="container mt-5">
-    <h2 class="mb-4">Ödeme Bilgileri</h2>
-  
-    <form #paymentForm="ngForm" (ngSubmit)="onSubmit(paymentForm)">
+<div class="container mt-5 payment-page">
+  <h2 class="mb-4" style="margin-top: 100px;">Payment Information</h2>
+
+  <div class="payment-content">
+    <form #paymentForm="ngForm" (ngSubmit)="onSubmit(paymentForm)" class="payment-form">
       <div class="mb-3">
-        <label class="form-label">Kart Sahibi</label>
-        <input type="text" class="form-control" name="cardHolder" ngModel required>
+        <label class="form-label">Cardholder</label>
+        <input type="text" class="form-control" name="cardHolder" [(ngModel)]="cardHolder" required>
       </div>
-  
+
       <div class="mb-3">
-        <label class="form-label">Kart Numarası</label>
-        <input type="text" class="form-control" name="cardNumber" ngModel required maxlength="16">
+        <label class="form-label">Card Number</label>
+        <input type="text" class="form-control" name="cardNumber" [(ngModel)]="cardNumber" maxlength="16" required
+          (input)="onCardNumberChange($event)">
       </div>
-  
+
+
       <div class="mb-3">
-        <label class="form-label">Son Kullanma Tarihi</label>
-        <input type="month" class="form-control" name="expiry" ngModel required>
+        <label class="form-label">Exp</label>
+        <input type="month" class="form-control" name="expiry" [(ngModel)]="expiryDate" required>
       </div>
-  
+
       <div class="mb-3">
         <label class="form-label">CVV</label>
-        <input type="text" class="form-control" name="cvv" ngModel required maxlength="3">
+        <input type="text" class="form-control" name="cvv" [(ngModel)]="cvv" maxlength="3" required>
       </div>
-  
-      <button type="submit" class="btn btn-success w-100">Ödemeyi Tamamla</button>
+
+      <button type="submit" class="btn btn-success w-100">Complete the Payment</button>
     </form>
+
+    <div class="card-preview">
+      <div class="card">
+        <div class="card-chip"></div>
+        <h4>{{ cardNumber || '#### #### #### ####' }}</h4>
+        <p>{{ cardHolder || 'CARD HOLDER' }}</p>
+        <p>{{ expiryDate || 'MM/YY' }}</p>
+
+        <div class="card-logo" *ngIf="cardType">
+          <img *ngIf="cardType === 'visa'" src="assets/icons/visa.png" alt="Visa" />
+          <img *ngIf="cardType === 'mastercard'" src="assets/icons/mastercard.png" alt="MasterCard" />
+        </div>
+      </div>
+    </div>
+
   </div>
-  

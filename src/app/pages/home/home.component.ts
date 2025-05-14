@@ -19,7 +19,7 @@ export class HomeComponent implements AfterViewInit {
 
   constructor(private router: Router) { }
 
-  carousel: any; 
+  carousel: any;
 
   ngAfterViewInit(): void {
     // Bootstrap carousel
@@ -32,25 +32,25 @@ export class HomeComponent implements AfterViewInit {
       });
     }
 
-    
+
 
     this.map = L.map('map').setView([35.147503, 33.502915], 10);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
-  
+
     const customIcon = L.icon({
       iconUrl: 'assets/icons/location-pin.png',
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40]
     });
-  
+
     this.marker = L.marker([35.147503, 33.502915], { icon: customIcon })
       .addTo(this.map)
       .bindPopup('Ercan Airport')
       .openPopup();
-  
+
     setTimeout(() => {
       this.map?.invalidateSize();
     }, 100);
@@ -77,7 +77,7 @@ export class HomeComponent implements AfterViewInit {
         .openPopup();
     }
   }
-  
+
 
   onSubmit(form: any) {
     const startDate = form.value.startDate;
@@ -95,9 +95,8 @@ export class HomeComponent implements AfterViewInit {
       return;
     }
 
-
-    const pickupDateTime = `${startDate}T${startTime}`;
-    const returnDateTime = `${endDate}T${endTime}`;
+    const pickupDateTime = new Date(`${startDate}T${startTime}`).toISOString();
+    const returnDateTime = new Date(`${endDate}T${endTime}`).toISOString();
 
     this.router.navigate(['/car-list'], {
       queryParams: {
@@ -114,11 +113,11 @@ export class HomeComponent implements AfterViewInit {
       this.carousel.pause(); // carousel durdur
     }
   }
-  
+
   hideDetails() {
     this.flippedCard = null;
     if (this.carousel) {
-      this.carousel.cycle(); 
+      this.carousel.cycle();
     }
   }
 
@@ -128,5 +127,5 @@ export class HomeComponent implements AfterViewInit {
       form.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  
+
 }

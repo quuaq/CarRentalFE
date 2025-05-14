@@ -1,0 +1,24 @@
+<table class="table table-bordered" style="margin-top: 100px;">
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Timestamp</th>
+      <th>Tc No</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of paginatedLogs">
+      <td>{{ log.action }}</td>
+      <td>{{ log.timestamp | date:'short' }}</td>
+      <td>{{ log.tcNo }}</td>
+      <td>{{ log.details }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between mt-3">
+  <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} / {{ totalPages }}</span>
+  <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage >= totalPages">Next</button>
+</div>

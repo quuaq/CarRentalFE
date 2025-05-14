@@ -6,6 +6,7 @@ import { CarListComponent } from './pages/car-list/car-list.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { ReservationHistoryComponent } from './pages/reservation-history/reservation-history.component';
 import { AdminReservationsComponent } from './pages/admin-reservations/admin-reservations.component';
+import { AdminLogsComponent } from './pages/admin-logs/admin-logs.component';
 
 
 export const routes: Routes = [
@@ -23,5 +24,7 @@ export const routes: Routes = [
   {
     path: 'invoice/:paymentId',
     loadComponent: () => import('./pages/invoice/invoice.component').then(m => m.InvoiceComponent)
-  }
+  },
+  { path: 'admin-logs', component: AdminLogsComponent },
+
 ];

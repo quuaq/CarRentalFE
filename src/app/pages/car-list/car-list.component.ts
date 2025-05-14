@@ -42,20 +42,23 @@ export class CarListComponent implements OnInit {
           (this.endDate.getTime() - this.startDate.getTime()) / (1000 * 3600 * 24)
         );
 
+        // Tarih seçildiyse sadece uygun araçlar gelsin
         this.carService.getAvailableCars(start, end).subscribe(data => {
           this.cars = data.map(car => ({
             ...car,
             totalPrice: car.pricePerDay * this.dayCount
           }));
         });
+
       } else {
-        this.showPrices = false;
+        // Tarih seçilmemişse sadece boşta olan araçlar gelsin
         this.carService.getAllCars().subscribe((data: any[]) => {
           this.cars = data;
         });
       }
     });
   }
+
 
   onReserve(carId: number, pricePerDay: number) {
     if (!this.startDate || !this.endDate) {
@@ -64,7 +67,7 @@ export class CarListComponent implements OnInit {
         title: 'Date Selection Required',
         text: 'Please select the date for booking the car',
         confirmButtonText: 'Select Date',
-      }).then(() =>{
+      }).then(() => {
         this.router.navigate(['/']);
       });
       return;
@@ -76,7 +79,7 @@ export class CarListComponent implements OnInit {
         title: 'Login Required',
         text: 'Please login to make a reservation.',
         confirmButtonText: 'Login',
-      }).then(() =>{
+      }).then(() => {
         this.router.navigate(['/auth']);
       })
       return;
