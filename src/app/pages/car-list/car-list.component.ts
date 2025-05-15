@@ -109,4 +109,23 @@ export class CarListComponent implements OnInit {
     });
   }
 
+  loadCars() {
+  const start = this.startDate?.toISOString();
+  const end = this.endDate?.toISOString();
+
+  if (start && end) {
+    this.carService.getAvailableCars(start, end).subscribe(data => {
+      this.cars = data.map(car => ({
+        ...car,
+        totalPrice: car.pricePerDay * this.dayCount
+      }));
+    });
+  } else {
+    this.carService.getAllCars().subscribe((data: any[]) => {
+      this.cars = data;
+    });
+  }
+}
+
+
 }

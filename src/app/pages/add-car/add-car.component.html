@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <h2>Add New Car</h2>
+    <form (ngSubmit)="addCar()" #carForm="ngForm">
+        <div class="mb-3">
+            <label class="form-label">Make</label>
+            <input type="text" class="form-control" [(ngModel)]="newCar.make" name="make" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Model</label>
+            <input type="text" class="form-control" [(ngModel)]="newCar.model" name="model" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Year</label>
+            <input type="number" class="form-control" [(ngModel)]="newCar.year" name="year" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Price Per Day</label>
+            <input type="number" class="form-control" [(ngModel)]="newCar.pricePerDay" name="pricePerDay" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">License Plate</label>
+            <input type="text" class="form-control" [(ngModel)]="newCar.licensePlate" name="licensePlate" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Car Image</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event)">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="newCar.isAvailable" name="isAvailable" checked>
+            <label class="form-check-label">Available</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" >Add Car</button>
+
+        <hr class="my-4">
+
+        <h4>Delete Car</h4>
+        <div class="mb-3">
+            <label class="form-label">License Plate</label>
+            <input type="text" class="form-control" [(ngModel)]="deletePlate" name="deletePlate" required>
+        </div>
+
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()">Delete Car</button>
+
+
+    </form>
+</div>

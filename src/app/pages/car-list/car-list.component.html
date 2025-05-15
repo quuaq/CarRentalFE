@@ -12,11 +12,13 @@
 </div>
 
 <div class="container mt-4">
-  <div class="row"  style="margin-top: 110px;">
-    <div class="col-md-4 mb-4"  *ngFor="let car of cars">
+  <div class="row" style="margin-top: 110px;">
+    <div class="col-md-4 mb-4" *ngFor="let car of cars">
       <div class="card shadow-sm h-100">
-        <img [src]="'assets/cars/' + car.make.toLowerCase() + '.jpg'" class="card-img-top" alt="Araç Görseli"
-          style="height: 200px; object-fit: cover;">
+        <img
+          [src]="car.imagePath ? 'https://localhost:44321' + car.imagePath : 'assets/cars/' + (car.make + '-' + car.model).toLowerCase() + '.jpg'"
+          class="card-img-top" alt="Araç Görseli" style="height: 200px; object-fit: cover;">
+
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ car.make }} - {{ car.model }}</h5>
           <p class="card-text">Year: {{ car.year }}</p>
