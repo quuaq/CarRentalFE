@@ -25,5 +25,4 @@ It allows users to browse available cars, make reservations, handle payments, an
 
 ---
 
-![Uploading image.png…]()
 
