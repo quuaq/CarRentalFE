@@ -1,12 +1,11 @@
-# Car Rental Front-End (CarRentalFE)
+## 🚘 Car Rental Front-End (CarRentalFE) EN
 
-## Description
 This is the Front-End part of the Car Rental Project, developed using **Angular 19** with a fully responsive and modern UI.  
 It allows users to browse available cars, make reservations, handle payments, and view invoices. Admin users can manage the system through an admin panel.
 
 ---
 
-##  Features
+## ⚙️ Features
 - Dynamic car listing with filters and sorting
 - Secure user authentication and role-based access (JWT Integration)
 - Car reservation and payment processing workflow
@@ -16,7 +15,7 @@ It allows users to browse available cars, make reservations, handle payments, an
 
 ---
 
-##  Technologies Used
+## ✅ Technologies Used
 - Angular 19
 - TypeScript
 - Bootstrap 5 / SCSS
