@@ -22,6 +22,35 @@ It allows users to browse available cars, make reservations, handle payments, an
 - RESTful API Integration (from CarRentalAPI)
 - JWT Authentication (via Backend)
 
+
+## 🚘 Araç Kiralama Ön Yüz (CarRentalFE) TR
+
+Bu proje, Araç Kiralama Projesi'nin ön yüzüdür ve **Angular 19** kullanılarak tamamen duyarlı ve modern bir arayüz ile geliştirilmiştir.  
+Kullanıcılar mevcut araçları görüntüleyebilir, rezervasyon yapabilir, ödemeleri yönetebilir ve faturaları görüntüleyebilir. Admin kullanıcılar ise sistemi bir admin paneli üzerinden yönetebilir.
+
 ---
+
+## ⚙️ Özellikler
+- Filtreleme ve sıralama ile dinamik araç listesi
+- Güvenli kullanıcı kimlik doğrulama ve rol tabanlı erişim (JWT entegrasyonu)
+- Araç rezervasyonu ve ödeme işlemleri akışı
+- Fatura oluşturma ve yönetimi
+- Masaüstü ve mobil cihazlar için duyarlı tasarım
+- Araç, rezervasyon ve kullanıcı yönetimi için admin paneli
+
+---
+
+## ✅ Kullanılan Teknolojiler
+- Angular 19
+- TypeScript
+- Bootstrap 5 / SCSS
+- RESTful API Entegrasyonu (CarRentalAPI üzerinden)
+- JWT Kimlik Doğrulama (Backend üzerinden)
+
+---
+
+## Screenshots
+### Home Page
+
 
 
