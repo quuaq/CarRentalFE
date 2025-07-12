@@ -51,6 +51,28 @@ Kullanıcılar mevcut araçları görüntüleyebilir, rezervasyon yapabilir, öd
 
 ## Screenshots
 ### Home Page
+![Ekran Görüntüsü](https://github.com/user-attachments/assets/88a74c57-33f2-4012-a364-3fb3b5b595a5)
+![Ekran Görüntüsü](https://github.com/user-attachments/assets/c98e2afd-a970-412b-a767-2e34142b205c)
+
+### Login Page
+![Ekran Görüntüsü](https://github.com/user-attachments/assets/5d1aa4f0-6676-463e-a5c9-71ad2e56e691)
+
+### About Page
+![Ekran Görüntüsü](https://github.com/user-attachments/assets/ab820868-a82b-4b2d-8741-43d67015c4ed)
+
+### Admin Logs Page
+![Ekran Görüntüsü](https://github.com/user-attachments/assets/a4199a22-05ce-4166-8bd7-3c6e012b4afa)
+
+## Contact - İletişim
+- For more information, please contact me!!
+- Samet Barış Öncül
+- LinkedIn : https://www.linkedin.com/in/samet-bar%C4%B1%C5%9F-%C3%B6nc%C3%BCl-5186ba270/
+- E-Mail: sbarisoncul35@gmail.com
+
+
+
+
+
 
 
 
