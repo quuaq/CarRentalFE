@@ -69,6 +69,12 @@ Kullanıcılar mevcut araçları görüntüleyebilir, rezervasyon yapabilir, öd
 - LinkedIn : https://www.linkedin.com/in/samet-bar%C4%B1%C5%9F-%C3%B6nc%C3%BCl-5186ba270/
 - E-Mail: sbarisoncul35@gmail.com
 
+## Licence
+
+This project is licensed under the MIT License.
+
+You are free to use, modify, and distribute this code for personal or commercial purposes.  
+For more details, see the [LICENSE](LICENSE) file in the root directory.
 
 
 
